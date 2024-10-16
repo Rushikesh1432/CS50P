@@ -2,72 +2,24 @@
 
 int main(void)
 {
+    int n =4;
+    int x=n;
+    int prd=1; 
 
-const float cost = 1000.00;
 
-char inp;
-printf("Are you a member:");
-scanf("%c",&inp);
-
-if(inp == 'y')
+while(n>=1)
 {
-    char mem;
-    printf(" 'g' for gold \n 's' for silver \n 'n' for none \n  ");
-    printf("Which membership do you own:");
-    scanf("%c",  &mem);
-
-    if( mem == 'g')
+    while(x>=1)
     {
-        printf("GOLD:Amt to pe paid %f",cost-(cost*0.25));
+        prd = prd * x;
+        x--;
     }
-    else if(mem =='s')
-    {
-        printf("SILVER:Amt to be paid %f",cost-(cost*0.15));
-    }
-    else
-    {
-        printf("bronze: amt to be paid %f",cost-(cost*0.1));
-    }
-
-
-
-
-
-
+    float sum;
+    float term = 1/prd;
+    sum = sum + term;
+    n--;
 
 }
-else
-{
-    printf("NOT A MEM: Amt to be paid %f",cost-100);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+printf("%f",sum);
 
 }
