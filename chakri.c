@@ -1,7 +1,15 @@
 #include <stdio.h>
+
 int main(){
-    int s;
+    int s=2;
+    while (s=2){ 
+    printf("Enter:");
     scanf("%d",&s);
+    if(s%2!=0) break;
+    s=2;
+    printf("Odd numkbers only\n");
+   }
+
     if(s%2!=0){  
     for(int i=0;i<(s/2);i++){
         for(int j=0;j<(s);j++){

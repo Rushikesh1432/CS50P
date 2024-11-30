@@ -7,6 +7,7 @@ items={
     "pav baji":10.00,
     "pani puri":20.00,
     "chai":7.00,
+    "biryani":100.0,
 }
 price=0
 while True:
@@ -16,7 +17,8 @@ while True:
     elif y in items:
         price=price+items[y]
         print(f"price of item ${items[y]}")
+        print(f"Total bill:{price}")
     else:
-        pass
+        print("Item not found")
        
 print(f"Total bill:{price}")

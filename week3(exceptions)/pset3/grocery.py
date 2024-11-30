@@ -1,10 +1,9 @@
 groceries={}
 
 while True:
-    item  =str(input(""))
+    item  =str(input("Enter:"))
     if  item == "quit" or " ":
         break
-
     elif item not in groceries:
         groceries[item]=0
 
