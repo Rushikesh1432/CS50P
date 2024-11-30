@@ -1,28 +1,18 @@
 #include <stdio.h>
+#include <string.h>
 
-int main(void)
+int main(void)   
 {
-    int n;
-    scanf("%d",&n);
-    float sum=0;
+    char s[1000];
+    fgets(s,100,stdin);
     
-
-
-while(n>=1)
-{
-    int x=n;
-    int prd=1; 
-    while(x>=1)
-    {
-        prd = prd * x;
-        x--;
-    }
-    
-   
-    sum = sum + (1.0/prd);
-    n--;
-
-}
-printf("%.5f",sum);
-
-}
+    int n=strlen(s);
+     for(int i=0;i<n;i++){
+       for(int j=i+1;j<n;j++){
+        if(s[i]>s[j]){
+            int temp=s[j];
+            s[j]=s[i];
+            s[i]=temp;
+        }}}
+     printf("%s",s);
+}    
