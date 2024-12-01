@@ -5,6 +5,10 @@ from calculator import square
 #defining more  test cases helps to find the mistake we did
  
 #pytest runs all test cases even one test fail
+def main():
+    test_negative()
+    test_positive()
+    test_zero()
 
 
 def test_positive():
@@ -24,3 +28,5 @@ def test_str():
     with pytest.raises(TypeError):
         square("cat")
         #This code 
+if __name__=="__main__":
+    main()
