@@ -1,1 +1,0 @@
-& C:/Users/DELL/AppData/Local/Programs/Python/Python313/python.exe c:/Users/DELL/pps/CS50P/week6/name1.py
