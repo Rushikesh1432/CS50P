@@ -1,37 +1,102 @@
+
 #include <stdio.h>
+#include <string.h>
 
-int main(){
-    int s=2;
-    while (s=2){ 
-    printf("Enter:");
-    scanf("%d",&s);
-    if(s%2!=0) break;
-    s=2;
-    printf("Odd numkbers only\n");
-   }
+// Max number of candidates
+#define MAX 9
 
-    if(s%2!=0){  
-    for(int i=0;i<(s/2);i++){
-        for(int j=0;j<(s);j++){
-            printf("S ");
-        }printf("\n");}
+// Candidates have name and vote count
+typedef struct
+{
+    char* name;
+    int votes;
+} candidate;
 
-    for(int i=0;i<(s/2);i++){
-    printf("S ");
+// Array of candidates
+candidate candidates[MAX];
+
+// Number of candidates
+int candidate_count;
+
+// Function prototypes
+int vote(char* name);
+void print_winner(void);
+
+int main(int argc, char* argv[])
+{
+    // Check for invalid usage
+    if (argc < 2)
+    {
+        printf("Usage: plurality [candidate ...]\n");
+        return 1;
     }
-    printf("O ");
-for(int i=0;i<(s/2);i++){
-    printf("S ");
-}printf("\n");
 
-    for(int i=0;i<(s/2);i++){
-        for(int j=0;j<(s);j++){
-            printf("S ");
-        }printf("\n");}}
-        else printf("Enter only odd numbers");
+    // Populate array of candidates
+    candidate_count = argc - 1;
+    if (candidate_count > MAX)
+    {
+        printf("Maximum number of candidates is %i\n", MAX);
+        return 2;
+    }
+    for (int i = 0; i < candidate_count; i++)
+    {
+        candidates[i].name = argv[i + 1];
+        candidates[i].votes = 0;
+    }
 
+    int voter_count = scanf("%d");
+
+    // Loop over all voters
+    for (int i = 0; i < voter_count; i++)
+    {
+        char* name = scanf("%s");
+
+        // Check for invalid vote
+        if (vote(name)==1)
+        {
+            printf("Invalid vote.\n");
+        }
+    }
+
+    // Display winner of election
+    print_winner();
 }
-/*
-1 2 11 17 19 1 3 
 
-*/
+// Update vote totals given a new vote
+int vote(char* name)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(name, candidates[i].name) == 0)
+        {
+            candidates[i].votes++;
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+// Print the winner (or winners) of the election
+void print_winner(void)
+{
+    int totalVotes = 0;
+
+    // Check to see who has the highest number of votes
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > totalVotes)
+        {
+            totalVotes = candidates[i].votes;
+        }
+    }
+
+    // Prints the names of who has the highest number of votes
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == totalVotes)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
+}

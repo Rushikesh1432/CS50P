@@ -1,5 +1,18 @@
-with open("week6/names.txt","r") as file:
-    lines=file.readlines()
+# with open("hi.txt","w") as file:
+#     for i in range(3):
+#         file.write(input("Enter:"))
+#         file.write("\n")
 
-for _ in lines:
-    print(f"hello,",_.rstrip())
+list=[]
+
+with open("hi.txt","r") as file:
+    for line in file:
+        name , house = line.rstrip().split(",")
+        dic={"name":name,"house": house}
+        list.append(dic)
+
+
+
+
+for i in sorted(list,key=lambda s:s["house"],reverse=True):
+    print(f"{i['name']} in {i['house']}")
