@@ -1,0 +1,13 @@
+import csv
+with open("after.csv","w") as s:
+   pass
+
+students=[]
+with open("before.csv","r") as file:
+   reader=csv.DictReader(file)
+   for row in reader:
+      first,last=row["name"].split(",")
+      house=row["house"]
+      with open("after.csv","a",newline="") as f:
+        writer=csv.DictWriter(f,fieldnames=["first","last","house"])
+        writer.writerow({"first":first.rstrip(),"last":last.rstrip(),"house":house.rstrip()})
