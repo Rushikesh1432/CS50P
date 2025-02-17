@@ -19,6 +19,6 @@ int main(){
     if(c==0) break;}
     printf("\n");
 for(int i=0;i<10;i++) printf("%d ",s[i]);
-
+printf("hello world");
 
 }
